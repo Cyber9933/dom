@@ -1,22 +1,26 @@
-const formDOM=document.querySelector("form");
-const inputDOM=formDOM.querySelector("input");
-const btnDOM=formDOM.querySelector("button");
-const listDOM=document.querySelector(".todo-list");
+import { header } from "./header.js";
 
-let count=1;
+header();
 
-btnDOM.addEventListener("click", event=>{
+const formDOM = document.querySelector('form');
+const inputDOM = formDOM.querySelector('input');
+const listDOM = document.querySelector('.todo-list');
+
+let count = 1;
+
+formDOM.addEventListener('submit', event => {
     event.preventDefault();
 
-    if(inputDOM.value.trim() === ""){
-         return;
-        }
+    if (inputDOM.value.trim() === '') {
+        inputDOM.value = '';
+        return;
+    }
 
-    listDOM.innerHTML+=`
-    <div class="todo-item">
-        <p>${count++} </p>
-        <p>${inputDOM.value}</p>
-    </div>`;
+    listDOM.innerHTML += `
+        <div class="todo-item">
+            <p>${count++}</p>
+            <p>${inputDOM.value}</p>
+        </div>`;
 
-    inputDOM.value="";
-})
+    inputDOM.value = '';
+});
